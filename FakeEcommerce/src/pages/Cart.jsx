@@ -32,15 +32,17 @@ import { useOutletContext } from "react-router"
 
 
 export const Cart = () => {
-  const { incart = [], counter } = useOutletContext() || {}
+  const { incart = [], counter,sumPrice,handlebutton } = useOutletContext() || {}
 
   return (
     <div className="p-6">
       <h1 className="text-3xl font-bold mb-6">🛒 Cart Shop</h1>
 
       {/* Cart Summary */}
-      <div className="mb-6 flex items-center justify-between bg-gray-100 p-4 rounded-lg shadow-sm">
+      <div className="mb-6 flex flex-col items-left justify-between bg-gray-100 p-4 rounded-lg shadow-sm">
         <h2 className="text-lg font-semibold">Items in Cart: {counter}</h2>
+        <h2 className="text-lg font-semibold">sum of Price: {sumPrice}</h2>
+
         <button className="btn btn-primary">Buy Now</button>
       </div>
 
@@ -50,6 +52,7 @@ export const Cart = () => {
           <p className="text-gray-500 text-lg">Your cart is empty 🛍️</p>
         ) : (
           incart.map(({ product, count }) => (
+            
             <div
               key={product.id}
               className="card bg-base-100 shadow-md hover:shadow-lg transition p-4 rounded-2xl"
@@ -75,7 +78,33 @@ export const Cart = () => {
                   <span className="badge badge-secondary text-sm">
                     Qty: {count}
                   </span>
+
+
                 </div>
+                  {count === 0 ? (
+                    <button
+                      className="btn btn-primary w-full"
+                      onClick={() => handlebutton(product, "increase")}
+                    >
+                      Add to Cart
+                    </button>
+                  ) : (
+                    <div className="flex gap-3 items-center w-full justify-between">
+                      <button
+                        className="btn btn-outline btn-secondary"
+                        onClick={() => handlebutton(product, "decrease")}
+                      >
+                        -
+                      </button>
+                      <span className="font-medium">{count}</span>
+                      <button
+                        className="btn btn-secondary"
+                        onClick={() => handlebutton(product, "increase")}
+                      >
+                        +
+                      </button>
+                    </div>
+                  )}
               </div>
             </div>
           ))

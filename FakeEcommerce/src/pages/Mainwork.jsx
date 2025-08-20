@@ -67,9 +67,16 @@ export const Mainwork = () => {
 
     return prev;
   });
-         setCounter(prev => prev + 1)
-         setSumPrice(prev =>prev+ product.price)
-
+    // adjust counter and sumPrice properly
+    if (type === "increase") {
+      setCounter((prev) => prev + 1)
+      setSumPrice((prev) => Number((prev + product.price).toFixed(2)))
+    } else if (type === "decrease") {
+      setCounter((prev) => (prev > 0 ? prev - 1 : 0))
+      setSumPrice((prev) =>
+        prev > product.price ? Number((prev - product.price).toFixed(2)) : 0
+      )
+    }
 }    
   useEffect(() => {
     const fetchdata = async () => {
@@ -92,7 +99,7 @@ export const Mainwork = () => {
     <Creatcontext value={{ products, categories, incart, setIncart ,counter, setCounter , handlebutton}}>
     <Nav counter= {counter} price= {sumPrice}/>
     {/* <Categories categories={categories}/> */}
-    <Outlet context={{ products, categories, incart, setIncart ,counter, setCounter , handlebutton}} />
+    <Outlet context={{ products, categories, incart, setIncart ,counter, setCounter , sumPrice,handlebutton}} />
     <Footer/>
     </Creatcontext>
     </>
