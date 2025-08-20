@@ -38,13 +38,27 @@ export const Cart = () => {
     <div className="p-6">
       <h1 className="text-3xl font-bold mb-6">🛒 Cart Shop</h1>
 
-      {/* Cart Summary */}
-      <div className="mb-6 flex flex-col items-left justify-between bg-gray-100 p-4 rounded-lg shadow-sm">
-        <h2 className="text-lg font-semibold">Items in Cart: {counter}</h2>
-        <h2 className="text-lg font-semibold">sum of Price: {sumPrice}</h2>
+{/* Cart Summary */}
+<div className="w-full max-w-md mx-auto mb-6 bg-white rounded-2xl shadow-md p-6 flex flex-col gap-4">
+  <h2 className="text-2xl font-bold text-gray-800 text-center">
+    🛒 Cart Summary
+  </h2>
 
-        <button className="btn btn-primary">Buy Now</button>
-      </div>
+  <div className="flex justify-between text-lg font-medium text-gray-700">
+    <span>Items in Cart:</span>
+    <span className="font-semibold text-gray-900">{counter}</span>
+  </div>
+
+  <div className="flex justify-between text-lg font-medium text-gray-700">
+    <span>Total Price:</span>
+    <span className="font-semibold text-green-600">${sumPrice.toFixed(2)}</span>
+  </div>
+
+  <button className="w-full mt-4 bg-blue-600 text-white py-2 px-4 rounded-xl font-semibold hover:bg-blue-700 transition duration-200">
+    Buy Now
+  </button>
+</div>
+
 
       {/* Cart Items */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
