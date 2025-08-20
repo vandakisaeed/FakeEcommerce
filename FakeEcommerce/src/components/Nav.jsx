@@ -1,12 +1,14 @@
+import { use, useContext } from "react"
 import { Link } from "react-router"
 import { useOutletContext } from "react-router"
+import {useDemoContext} from '../pages/Mainwork'
 export const Nav=({counter,price})=>{
-
+        
     return(
         <>
             <div className="navbar bg-base-100 shadow-sm">
             <div className="flex-2">
-                <Link className="btn btn-ghost text-xl" to={'/'}>ECOMMERCE</Link>
+                <Link className="btn btn-ghost text-xl" to={'/'} >ECOMMERCE</Link>
                 {/* <Link className="btn btn-ghost text-xl" to={'/usecontext'}>Extra</Link> */}
                 {/* <Link className="btn btn-ghost text-xl" to={'/Cart'}>CART</Link> */}
 

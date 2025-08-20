@@ -36,7 +36,7 @@ const handleProduct = (state, action) => {
 export const Categories = ({ categories, dispatch, products }) => {
     
   return (
-    <div className="flex gap-2 mb-4">
+    <div className="w-full max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-4xl mx-auto px-4">
       <button
         className="btn btn-ghost text-xl"
         onClick={() => dispatch({ type: "Home", payload: products })}
@@ -129,11 +129,13 @@ export const Categories = ({ categories, dispatch, products }) => {
 // }
 
 
+
 export const Body = () => {
   const { products, categories, incart, handlebutton } = useDemoContext() || {}
 
   // Use reducer with initial state = all products
   const [filteredProducts, dispatch] = useReducer(handleProduct, products)
+
 
   return (
     <div className="p-6">

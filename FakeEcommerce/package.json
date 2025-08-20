@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@vitejs/plugin-react": "^5.0.0",
-    "daisyui": "^5.0.50",
     "dom": "^0.0.3",
     "node-fetch": "^3.3.2",
     "react-dom": "^19.1.1",
@@ -25,6 +24,7 @@
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
     "@vitejs/plugin-react-swc": "^4.0.0",
+    "daisyui": "^5.0.50",
     "eslint": "^9.33.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
