@@ -1,6 +1,7 @@
 import {createContext, use,useReducer} from 'react'
 import { useOutletContext } from "react-router"
 import { useDemoContext } from './Mainwork'
+import { useEffect } from "react";
 
 
 
@@ -134,8 +135,13 @@ export const Body = () => {
   const { products, categories, incart, handlebutton } = useDemoContext() || {}
 
   // Use reducer with initial state = all products
-  const [filteredProducts, dispatch] = useReducer(handleProduct, products)
+  const [filteredProducts, dispatch] = useReducer(handleProduct, products || [])
 
+  useEffect(() => {
+    if (products?.length > 0) {
+      dispatch({ type: "Home", payload: products });
+    }
+  }, [products]);
 
   return (
     <div className="p-6">
